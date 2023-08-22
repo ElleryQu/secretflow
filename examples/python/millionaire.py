@@ -24,8 +24,9 @@ import argparse
 import json
 import logging
 
-import jax.numpy as jnp
+# import jax.numpy as jnp
 import numpy as np
+import torch
 
 import spu.utils.distributed as ppd
 
@@ -56,7 +57,7 @@ def rand_from_bob():
 @ppd.device("SPU")
 def compare(x, y):
     logging.info("compute the max of two parameter, unknown for all parties.")
-    return jnp.maximum(x, y)
+    return torch.maximum(x, y)
 
 
 x = rand_from_alice()
